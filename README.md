@@ -1,5 +1,7 @@
 # asdf-java
 
+[![Build Status](https://dev.azure.com/beardix/asdf/_apis/build/status/beardix.asdf-java?branchName=master)](https://dev.azure.com/beardix/asdf/_build/latest?definitionId=16&branchName=master)
+
 Java plugin for the [asdf](https://github.com/asdf-vm/asdf) version manager.
 
 This plugin supports the following JDKs:
