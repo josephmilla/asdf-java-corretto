@@ -22,6 +22,8 @@ jobs:
       - name: asdf_plugin_test
         uses: asdf-vm/actions/plugin-test@v1.0.0
         with:
+          # TODO: remove hard-coded version
+          version: 11.0.5.10.1
           command: java -version
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
