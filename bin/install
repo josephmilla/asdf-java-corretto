@@ -15,7 +15,7 @@ error_exit() {
   exit "${2:-1}"
 }
 
-corretto_platform() {
+platform() {
   case "$(uname)" in
     Darwin)
       echo "macosx-x64"
@@ -26,12 +26,15 @@ corretto_platform() {
   esac
 }
 
-install_corretto() {
-  local -r install_version="$1"
-  local -r install_path="$2"
-  local -r download_url="${CORRETTO_11_BASE_URL}/${install_version}/amazon-corretto-${install_version}-$(corretto_platform).tar.gz"
+install() {
+  local -r install_type="$1"
+  local -r install_version="$2"
+  local -r install_path="$3"
+  local -r download_url="${CORRETTO_11_BASE_URL}/${install_version}/amazon-corretto-${install_version}-$(platform).tar.gz"
   local -r download_path="${TMP_DOWNLOAD_DIR}/jdk.tar.gz"
   local -r extracted_path="${TMP_DOWNLOAD_DIR}/extracted"
+
+  [ "$install_type" != "version" ] && error_exit "Error: source installs are not supported"
 
   echo "Downloading from ${download_url}"
   if curl -fL -o "$download_path" "$download_url"; then
@@ -46,23 +49,6 @@ install_corretto() {
   else
     error_exit "Error: version ${install_version} not found"
   fi
-}
-
-install() {
-  local -r install_type="$1"
-  local -r install_version="$2"
-  local -r install_path="$3"
-
-  [ "$install_type" != "version" ] && error_exit "Error: source installs are not supported"
-
-  case "$install_version" in
-    corretto-*)
-      install_corretto "$install_version" "$install_path"
-      ;;
-    *)
-      error_exit "Error: version ${install_version} not found"
-      ;;
-  esac
 }
 
 #
