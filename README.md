@@ -1,18 +1,18 @@
-# asdf-java
+# asdf-java-corretto
 
-![](https://github.com/beardix/asdf-java/workflows/ci/badge.svg)
+![](https://github.com/beardix/asdf-java-corretto/workflows/ci/badge.svg)
 
-Java plugin for the [asdf](https://github.com/asdf-vm/asdf) version manager.
+[Amazon Corretto](https://aws.amazon.com/corretto/) Java plugin for the [asdf](https://github.com/asdf-vm/asdf) version manager.
 
-This plugin supports the following JDKs:
-* [Amazon Corretto 11](https://aws.amazon.com/corretto/) - `corretto-` version prefix
+This plugin supports the following Amazon Corretto versions:
+* 11
 
 ## Install
 
 ```
-asdf plugin-add java https://github.com/beardix/asdf-java.git
+asdf plugin-add java-corretto https://github.com/beardix/asdf-java-corretto.git
 ```
 
 ## Use
 
-Check out the [asdf](https://github.com/asdf-vm/asdf) readme for instructions on how to install and manage versions of Java.
+Check out the [asdf](https://github.com/asdf-vm/asdf) readme for instructions on how to install and manage versions of Amazon Corretto Java.

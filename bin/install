@@ -27,7 +27,7 @@ corretto_platform() {
 }
 
 install_corretto() {
-  local -r install_version="${1#corretto-}"
+  local -r install_version="$1"
   local -r install_path="$2"
   local -r download_url="${CORRETTO_11_BASE_URL}/${install_version}/amazon-corretto-${install_version}-$(corretto_platform).tar.gz"
   local -r download_path="${TMP_DOWNLOAD_DIR}/jdk.tar.gz"

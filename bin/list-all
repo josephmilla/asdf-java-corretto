@@ -17,13 +17,12 @@ sort_versions() {
 
 list_github_versions() {
   local -r releases_url="$1"
-  local -r version_prefix="$2"
 
   cmd="curl -fsS --url $releases_url"
   [ -n "$GITHUB_API_TOKEN" ] && cmd+=" -H 'Authorization: token $GITHUB_API_TOKEN'"
-  echo "$(eval $cmd | grep -oE "tag_name\": *\".*\"," | sed "s/tag_name\": *\"/${version_prefix}-/;s/\",//")"
+  echo "$(eval $cmd | grep -oE "tag_name\": *\".*\"," | sed "s/tag_name\": *\"//;s/\",//")"
 }
 
 #
-versions="$(list_github_versions "$CORRETTO_11_RELEASES_URL" "corretto")"
+versions="$(list_github_versions "$CORRETTO_11_RELEASES_URL")"
 echo "$(echo "$versions" | sort_versions | tr '\n' ' ')"
