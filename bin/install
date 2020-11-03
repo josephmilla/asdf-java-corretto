@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-readonly CORRETTO_11_BASE_URL="https://d3pxv6yz143wms.cloudfront.net"
+readonly CORRETTO_11_BASE_URL="https://corretto.aws/downloads/resources"
 
 readonly TMP_DOWNLOAD_DIR="$(mktemp -d)"
 trap 'rm -rf "${TMP_DOWNLOAD_DIR?}"' EXIT
