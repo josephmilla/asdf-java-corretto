@@ -13,17 +13,20 @@ on:
 jobs:
   plugin_test:
     strategy:
+      fail-fast: false
       matrix:
-        os: [macOS-latest, ubuntu-latest]
+        os:
+          - macos-latest
+          - ubuntu-latest
 
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: asdf_plugin_test
-        uses: asdf-vm/actions/plugin-test@v1.0.0
+      - name: Test plugin
+        uses: asdf-vm/actions/plugin-test@v1
         with:
           # TODO: remove hard-coded version
-          version: 11.0.5.10.1
+          version: 11.0.9.11.1
           command: java -version
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
