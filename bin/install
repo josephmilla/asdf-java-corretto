@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-readonly CORRETTO_11_BASE_URL="https://corretto.aws/downloads/resources"
+readonly CORRETTO_BASE_URL="https://corretto.aws/downloads/resources"
 
 readonly TMP_DOWNLOAD_DIR="$(mktemp -d)"
 trap 'rm -rf "${TMP_DOWNLOAD_DIR?}"' EXIT
@@ -30,7 +30,7 @@ install() {
   local -r install_type="$1"
   local -r install_version="$2"
   local -r install_path="$3"
-  local -r download_url="${CORRETTO_11_BASE_URL}/${install_version}/amazon-corretto-${install_version}-$(platform).tar.gz"
+  local -r download_url="${CORRETTO_BASE_URL}/${install_version}/amazon-corretto-${install_version}-$(platform).tar.gz"
   local -r download_path="${TMP_DOWNLOAD_DIR}/jdk.tar.gz"
   local -r extracted_path="${TMP_DOWNLOAD_DIR}/extracted"
 
